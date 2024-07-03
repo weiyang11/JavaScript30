@@ -1,0 +1,6 @@
+Using the data-key attribute to pass data to JavaScript using the dataset object.
+Manipulating the audio object, including the play() method and currentTime property.
+Responding to the keydown event to create an immersive interaction.
+Simulating a click event on a key element using key.click().
+Utilizing the transitionend event for smooth animations.
+Ensuring an event triggers only once with the { once: true } option.
