@@ -59,6 +59,45 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  function keyClicked() {
+    // Get the value of the 'data-key' attribute from the clicked element
+    const keyCode = this.dataset.key;
+    // Find the corresponding audio element with the same data-key attribute
+    const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+    if (audio) {
+      // Reset the audio playback to the beginning
+      audio.currentTime = 0;
+
+      // Play the audio
+      audio.play();
+
+      // Add the "playing" class to the clicked element
+      this.classList.add("playing");
+
+      // Listen for the 'transitionend' event on the clicked element only 'once'
+      // This event is triggered when the CSS transition is completed
+      this.addEventListener("transitionend", () => {
+        // Remove the "playing" class from the element
+        this.classList.remove("playing");
+      },
+      // executed only once
+      { once: true }
+    );
+  }
+}
+
+window.addEventListener("keydown", (e) => {
+  // Find the corresponding key element based on the key code
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  // Check if a corresponding key element was found
+  if (key) {
+    // Simulate a click event on the key element
+    key.click();
+  }
+});
+
+  const keys = document.querySelectorAll(".key");
+   keys.forEach((key) => key.addEventListener("click", keyClicked));
 
 </script>
 
